@@ -20,8 +20,8 @@
             {{ student.name | titlecase }}
           </a>
       </td>
-      <td>{{ student.city }}</td>
-      <td>{{ student.course }}</td>
+      <td>{{ student.city  | titlecase }}</td>
+      <td>{{ student.course  | titlecase }}</td>
       <td><button (click)="delete(student.id)">Delete</button></td>
     </tr>
     <tr *ngIf="!students || !students.length">

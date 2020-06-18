@@ -13,18 +13,18 @@ import { SorterService } from 'src/app/core/sorter.service';
 
 export class StudentsListComponent implements OnInit {
   students: IStudentList[] = [];
-  private _students: IStudentList[] = [];
-  currentFilter: string = "";
+  private allStudents: IStudentList[] = [];
+  currentFilter = '';
 
   constructor(private dataService: DataService, private sorterService: SorterService, public router: Router) { }
-  
+
   ngOnInit() {
     this.reload();
   }
 
   private reload() {
-    this._students = this.dataService.getStudents();
-    this.students = this._students;
+    this.allStudents = this.dataService.getStudents();
+    this.students = this.allStudents;
     this.sorterService.sort(this.students, 'name', true);
     this.filter();
   }
@@ -42,13 +42,13 @@ export class StudentsListComponent implements OnInit {
 
   filter() {
     if (this.currentFilter) {
-      this.students = this._students.filter((student: IStudentList) => {
+      this.students = this.allStudents.filter((student: IStudentList) => {
         return (student.name.toLowerCase().indexOf(this.currentFilter.toLowerCase()) > -1 ||
           student.city.toLowerCase().indexOf(this.currentFilter.toLowerCase()) > -1 ||
           student.course.toLowerCase().indexOf(this.currentFilter.toLowerCase()) > -1);
       });
     } else {
-      this.students = this._students;
+      this.students = this.allStudents;
     }
   }
 }

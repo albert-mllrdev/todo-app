@@ -3,6 +3,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { IStudent, ICourse } from 'src/app/shared/interfaces';
 import { DataService } from '../../core/data.service';
+import { SorterService } from 'src/app/core/sorter.service';
 
 @Component({
   selector: 'app-student-view',
@@ -13,19 +14,21 @@ import { DataService } from '../../core/data.service';
 export class StudentViewComponent implements OnInit {
   student: IStudent;
   courses: ICourse[] = [];
-  valid: boolean = true;
+  valid = true;
 
-  constructor(private dataService: DataService, private route: ActivatedRoute, public router: Router) { }
+  constructor(private dataService: DataService, private route: ActivatedRoute,
+              private sorterService: SorterService, public router: Router) { }
 
   save() {
     this.dataService.saveStudent(this.student);
-    this.router.navigate(["/students"]);
+    this.router.navigate(['/students']);
   }
 
   ngOnInit() {
-    let id = +this.route.snapshot.paramMap.get('id');
+    const id = +this.route.snapshot.paramMap.get('id');
     this.student = this.dataService.getStudent(id);
     this.courses = this.dataService.getCourses();
+    this.sorterService.sort(this.courses, 'name', true);
     this.valid = (id !== 0);
   }
 

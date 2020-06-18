@@ -9,99 +9,99 @@ import { IStudent, ICourse, ICourseList } from '../../app/shared/interfaces';
 @Injectable()
 export class DataService {
 
-  baseUrl: string = 'assets/';
+  baseUrl = 'assets/';
 
-  private _students: IStudent[];
-  private _courses: ICourse [];
+  private allStudents: IStudent[];
+  private allCourses: ICourse [];
 
   constructor(private http: HttpClient) {
-    this._students = [
+    this.allStudents = [
       {
-        "id": 1,
-        "firstName": "Jerrod ",
-        "lastName": "Percival",
-        "city": "Makati City",
-        "courseId": 1
+        id: 1,
+        firstName: 'Jerrod ',
+        lastName: 'Percival',
+        city: 'Makati City',
+        courseId: 1
       },
       {
-        "id": 2,
-        "firstName": "Evelyn",
-        "lastName": "Randell",
-        "city": "Cebu City",
-        "courseId": null
+        id: 2,
+        firstName: 'Evelyn',
+        lastName: 'Randell',
+        city: 'Cebu City',
+        courseId: null
       },
       {
-        "id": 3,
-        "firstName": "Anant",
-        "lastName": "Beckham",
-        "city": "Cebu City",
-        "courseId": 2
+        id: 3,
+        firstName: 'Anant',
+        lastName: 'Beckham',
+        city: 'Cebu City',
+        courseId: 2
       },
       {
-        "id": 4,
-        "firstName": "Dalton",
-        "lastName": "Belcher",
-        "city": "Dumaguete City",
-        "courseId": 4
+        id: 4,
+        firstName: 'Dalton',
+        lastName: 'Belcher',
+        city: 'Dumaguete City',
+        courseId: 4
       }
     ];
 
-    this._courses = [
+    this.allCourses = [
       {
-        "id": 1,
-        "name": "Agriculture"
+        id: 1,
+        name: 'Agriculture'
       },
       {
-        "id": 2,
-        "name": "Computer Science"
+        id: 2,
+        name: 'Computer Science'
       },
       {
-        "id": 3,
-        "name": "Mathematics"
+        id: 3,
+        name: 'Mathematics'
       },
       {
-        "id": 4,
-        "name": "Biology"
+        id: 4,
+        name: 'Biology'
       }
     ];
   }
 
-  //getStudents(): Observable<object> {
+  // getStudents(): Observable<object> {
   //  return this.http.get<object>(this.baseUrl + 'students.json')
   //    .pipe(
   //      catchError(this.handleError)
   //    );
-  //}
+  // }
 
-  //getCourses(): Observable<object> {
+  // getCourses(): Observable<object> {
   //  return this.http.get<object>(this.baseUrl + 'courses.json')
   //    .pipe(
   //      catchError(this.handleError)
   //    );
-  //}
+  // }
 
   getStudents() {
-    return this._students.map((student: IStudent) => {
-      let courses = this._courses.filter((course: ICourse) => course.id === student.courseId);
+    return this.allStudents.map((student: IStudent) => {
+      const courses = this.allCourses.filter((course: ICourse) => course.id === student.courseId);
       return {
         id: student.id,
-        name: student.firstName + " " + student.lastName,
+        name: student.firstName + ' ' + student.lastName,
         city: student.city,
-        course: (!courses || !courses.length) ? "" : courses[0].name
-      }
+        course: (!courses || !courses.length) ? '' : courses[0].name
+      };
     });
   }
 
   getStudent(id: number) {
-    let student: IStudent = {
-      "id": 0,
-      "firstName": "",
-      "lastName": "",
-      "city": "",
-      "courseId": null
-    }
+    const student: IStudent = {
+      id: 0,
+      firstName: '',
+      lastName: '',
+      city: '',
+      courseId: null
+    };
 
-    let students = this._students.filter((student: IStudent)  => student.id === id);
+    const students = this.allStudents.filter((stud: IStudent)  => stud.id === id);
     if (students && students.length) {
       student.id = students[0].id;
       student.firstName = students[0].firstName;
@@ -113,16 +113,19 @@ export class DataService {
   }
 
   deleteStudent(id: number) {
-    this._students = this._students.filter((student: IStudent) => student.id !== id);
+    this.allStudents = this.allStudents.filter((student: IStudent) => student.id !== id);
   }
 
   saveStudent(data: IStudent) {
-    let students = this._students.filter((student: IStudent) => student.id === data.id);
+    if (data.courseId !== null) {
+      data.courseId = +data.courseId;
+    }
+    const students = this.allStudents.filter((student: IStudent) => student.id === data.id);
     if (!students || !students.length) {
-      data.id = Math.max.apply(Math, this._students.map((student: IStudent) => { return student.id; })) + 1;
-      this._students.push(data);
+      data.id = Math.max.apply(Math, this.allStudents.map((student: IStudent) => student.id)) + 1;
+      this.allStudents.push(data);
     } else {
-      var student = students[0];
+      const student = students[0];
       student.firstName = data.firstName;
       student.lastName = data.lastName;
       student.city = data.city;
@@ -131,23 +134,23 @@ export class DataService {
   }
 
   getCourses() {
-      return this._courses.map((course: ICourseList) => {
-      let students = this._students.filter((student: IStudent) => course.id === student.courseId);
-        return {
+      return this.allCourses.map((course: ICourseList) => {
+      const students = this.allStudents.filter((student: IStudent) => course.id === student.courseId);
+      return {
           id: course.id,
           name: course.name,
           isDeletable: (students && students.length) ? false : true
-        }
+        };
     });
   }
 
   getCourse(id: number) {
-    let course: ICourse = {
-      "id": 0,
-      "name": ""
-    }
+    const course: ICourse = {
+      id: 0,
+      name: ''
+    };
 
-    let courses = this._courses.filter((course: ICourse) => course.id === id);
+    const courses = this.allCourses.filter((cou: ICourse) => cou.id === id);
     if (courses && courses.length) {
       course.id = courses[0].id;
       course.name = courses[0].name;
@@ -156,26 +159,26 @@ export class DataService {
   }
 
   saveCourse(data: ICourse) {
-    let courses = this._courses.filter((course: ICourse) => course.id === data.id);
+    const courses = this.allCourses.filter((course: ICourse) => course.id === data.id);
     if (!courses || !courses.length) {
-      data.id = Math.max.apply(Math, this._courses.map((course: ICourse) => { return course.id; })) + 1;
-      this._courses.push(data);
+      data.id = Math.max.apply(Math, this.allCourses.map((course: ICourse) => course.id)) + 1;
+      this.allCourses.push(data);
     } else {
-      var course = courses[0];
+      const course = courses[0];
       course.name = data.name;
     }
   }
 
   deleteCourse(id: number) {
-    this._courses = this._courses.filter((course: ICourse) => course.id !== id);
+    this.allCourses = this.allCourses.filter((course: ICourse) => course.id !== id);
   }
 
-  //private handleError(error: any) {
+  // private handleError(error: any) {
   //  console.error('server error:', error);
   //  if (error.error instanceof Error) {
   //    const errMessage = error.error.message;
   //    return Observable.throw(errMessage);
   //  }
   //  return Observable.throw(error || 'Node.js server error');
-  //}
+  // }
 }

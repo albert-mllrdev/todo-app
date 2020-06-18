@@ -12,13 +12,13 @@ import { DataService } from '../../core/data.service';
 
 export class CourseViewComponent implements OnInit {
   course: ICourse;
-  valid: boolean = true;
+  valid = true;
 
   constructor(private dataService: DataService, private route: ActivatedRoute, public router: Router) { }
 
   save() {
     this.dataService.saveCourse(this.course);
-    this.router.navigate(["/courses"]);
+    this.router.navigate(['/courses']);
   }
 
   validate() {
@@ -26,7 +26,7 @@ export class CourseViewComponent implements OnInit {
   }
 
   ngOnInit() {
-    let id = +this.route.snapshot.paramMap.get('id');
+    const id = +this.route.snapshot.paramMap.get('id');
     this.course = this.dataService.getCourse(id);
     this.valid = (id !== 0);
   }
