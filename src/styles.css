@@ -1,0 +1,36 @@
+body{
+  margin:0px;
+  font-family: Arial;
+}
+
+.main-container{
+  margin-left:20px;
+}
+
+button {
+  cursor: pointer;
+  background-color: #efefef;
+  border: none;
+  color: black;
+  padding: 15px 0px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  min-width: 90px;
+  border-radius: 10px;
+  outline: none;
+}
+
+button:hover{
+  font-weight:bold;
+}
+
+button.is-disabled {
+  color: lightgrey;
+  cursor: default;
+}
+
+button.is-disabled:hover {
+  font-weight: normal;
+}
