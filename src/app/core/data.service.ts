@@ -32,8 +32,8 @@ export class DataService {
       },
       {
         id: 3,
-        firstName: 'Anant',
-        lastName: 'Beckham',
+        firstName: 'Annat',
+        lastName: 'Beecham',
         city: 'Cebu City',
         courseId: 2
       },

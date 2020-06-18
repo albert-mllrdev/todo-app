@@ -48,8 +48,8 @@ direction = 1;
     }
 
     resolveProperty(path: string, obj: any) {
-      return path.split('.').reduce(function(prev, curr) {
+      return path.split('.').reduce((prev, curr) => {
           return (prev ? prev[curr] : undefined);
       }, obj || self);
     }
-}
+  }
