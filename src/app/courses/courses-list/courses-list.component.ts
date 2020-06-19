@@ -11,8 +11,8 @@ import { SorterService } from 'src/app/core/sorter.service';
 })
 
 export class CoursesListComponent implements OnInit {
-  courses: ICourseList[] = [];
   private allCourses: ICourseList[] = [];
+  courses: ICourseList[] = [];
   currentFilter = '';
 
   constructor(private dataService: DataService, private sorterService: SorterService, public router: Router) { }
@@ -22,10 +22,12 @@ export class CoursesListComponent implements OnInit {
   }
 
   reload() {
-    this.allCourses = this.dataService.getCourses();
-    this.courses = this.allCourses;
-    this.sorterService.sort(this.courses, 'name', true);
-    this.filter();
+    this.dataService.getCoursesList().subscribe((courses: ICourseList[]) => {
+      this.allCourses = courses;
+      this.courses = this.allCourses;
+      this.sorterService.sort(this.courses, 'name', true);
+      this.filter();
+    });
   }
 
   delete(id) {

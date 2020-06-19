@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { IStudentList } from 'src/app/shared/interfaces';
-import { DataService } from 'src/app/core/data.service';
 import { SorterService } from 'src/app/core/sorter.service';
+import { DataService } from 'src/app/core/data.service';
 
 @Component({
   selector: 'app-students-list',
@@ -12,8 +12,8 @@ import { SorterService } from 'src/app/core/sorter.service';
 })
 
 export class StudentsListComponent implements OnInit {
-  students: IStudentList[] = [];
   private allStudents: IStudentList[] = [];
+  students: IStudentList[] = [];
   currentFilter = '';
 
   constructor(private dataService: DataService, private sorterService: SorterService, public router: Router) { }
@@ -23,10 +23,12 @@ export class StudentsListComponent implements OnInit {
   }
 
   private reload() {
-    this.allStudents = this.dataService.getStudents();
-    this.students = this.allStudents;
-    this.sorterService.sort(this.students, 'name', true);
-    this.filter();
+    this.dataService.getStudentList().subscribe((students: IStudentList[]) => {
+      this.allStudents = students;
+      this.students = this.allStudents;
+      this.sorterService.sort(this.students, 'name', true);
+      this.filter();
+    });
   }
 
   delete(id) {

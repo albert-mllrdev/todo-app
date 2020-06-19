@@ -15,8 +15,8 @@
   },
   {
     "id": 3,
-    "firstName": "Anant",
-    "lastName": "Beckham",
+    "firstName": "Molly",
+    "lastName": "Beckmann",
     "city": "Cebu City",
     "courseId": 2
   },
@@ -25,6 +25,13 @@
     "firstName": "Dalton",
     "lastName": "Belcher",
     "city": "Dumaguete City",
+    "courseId": 4
+  },
+  {
+    "id": 5,
+    "firstName": "John",
+    "lastName": "Orson",
+    "city": "Davao City",
     "courseId": 4
   }
 ]

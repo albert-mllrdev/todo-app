@@ -30,6 +30,10 @@ select {
   outline: none;
 }
 
+select > .placeholder {
+  display: none;
+}
+
 .view-container button {
   float:right;
   margin-left:10px;
