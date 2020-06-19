@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { map, catchError, retry } from 'rxjs/operators';
 import { fail } from 'assert';
 
@@ -183,8 +183,8 @@ export class DataService {
    console.error('server error:', error);
    if (error.error instanceof Error) {
      const errMessage = error.error.message;
-     return Observable.throw(errMessage);
+     return throwError;
    }
-   return Observable.throw(error || 'Node.js server error');
+   return throwError(error || 'Node.js server error');
   }
 }
