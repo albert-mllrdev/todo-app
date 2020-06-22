@@ -1,0 +1,12 @@
+<div class="row-container">
+  <div>
+    <a [routerLink]="['/students/view', student.id]">
+      {{ student.firstName | titlecase }} {{ student.lastName | titlecase }}
+    </a>
+  </div>
+  <div>{{ student.city  | titlecase }}</div>
+  <div>{{ course  | titlecase }}</div>
+  <div>
+    <button (click)="deleteStudent(student.id)">Delete</button>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<form [formGroup]="profileForm" (ngSubmit)="saveCourse()">
+    <label>
+      Name:
+      <input type="text" formControlName="name">
+    </label>
+
+    <label>
+      <button type="submit" [disabled]="!profileForm.valid">Save</button>
+      <button *ngIf="goBackToCourses" (click)="router.navigate(['/courses'])">Back</button>
+    </label>
+  </form>

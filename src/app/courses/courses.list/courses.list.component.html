@@ -1,0 +1,28 @@
+<div style="width: 600px;">
+  <div class="top-container">
+    <div class="filter-container">
+      <span>Filter</span>
+      <input type="text" [(ngModel)]="courseFilter.name"/>
+    </div>
+    <button class="add-button" (click)="router.navigate(['/courses/new'])">Add New</button>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tr *ngFor="let course of courses | orderBy: 'name' : false : true | filterBy: courseFilter">
+      <td colspan="2">
+        <app-courses-list-row [course]="course" (deleteCourseEvent)='deleteCourse($event)'></app-courses-list-row>
+      </td>
+    </tr>
+    <tr *ngIf="!(courses | filterBy: courseFilter).length">
+      <td colspan="2" class="no-records">No courses found...</td>
+    </tr>
+  </table>
+  <div class="record-summary" *ngIf="(courses | filterBy: courseFilter).length">
+    Total courses: <b>{{(courses | filterBy: courseFilter).length}}</b>
+  </div>
+</div>

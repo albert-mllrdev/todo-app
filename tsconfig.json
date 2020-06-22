@@ -14,7 +14,10 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@interfaces/*": ["src/app/shared/interfaces/*"]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
