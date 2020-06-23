@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { IStudentList } from 'src/app/shared/interfaces';
 import { SorterService } from 'src/app/core/sorter.service';
-import { StudentDataService } from 'src/app/core/data/students.services';
+import { DataService } from 'src/app/core/data.service';
 
 @Component({
   selector: 'app-students-list',
@@ -16,7 +16,7 @@ export class StudentsListComponent implements OnInit {
   students: IStudentList[] = [];
   currentFilter = '';
 
-  constructor(private dataService: StudentDataService, private sorterService: SorterService, public router: Router) { }
+  constructor(private dataService: DataService, private sorterService: SorterService, public router: Router) { }
 
   ngOnInit() {
     this.reload();

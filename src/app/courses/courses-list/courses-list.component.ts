@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ICourseList } from 'src/app/shared/interfaces';
+import { DataService } from 'src/app/core/data.service';
 import { SorterService } from 'src/app/core/sorter.service';
-import { CoursesDataService } from 'src/app/core/data/courses.services';
 
 @Component({
   selector: 'app-courses-list',
@@ -15,7 +15,7 @@ export class CoursesListComponent implements OnInit {
   courses: ICourseList[] = [];
   currentFilter = '';
 
-  constructor(private dataService: CoursesDataService, private sorterService: SorterService, public router: Router) { }
+  constructor(private dataService: DataService, private sorterService: SorterService, public router: Router) { }
 
   ngOnInit() {
     this.reload();
