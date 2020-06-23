@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ICourse } from 'src/app/shared/interfaces/course';
 import { CourseDataService } from 'src/app/core/data/data.course.service';
+import { ICourse } from '@interfaces/course';
 
 @Component({
   selector: 'app-courses-list',
