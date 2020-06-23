@@ -1,0 +1,4 @@
+<div class="task-list-row-container" [ngClass]="{'task-complete':task.isComplete}" (click)=viewTask()>
+  <div class="complete-marker" (click)=completeTask($event) title="Is Complete"></div>
+  <span class="task-title">{{task.title}}</span>
+</div>

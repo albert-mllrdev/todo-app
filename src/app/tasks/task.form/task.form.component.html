@@ -1,0 +1,41 @@
+<div class="task-form-container">
+
+  <div class="task-form-controls-container">
+    <!-- <a [routerLink]="['/tasks']"><i class="fa fa-arrow-left" title="Back"></i></a>
+    <i class="fa fa-save" title="Save" (click)="saveTask()"></i> -->
+    <i class="fa fa-arrow-left" title="Back" (click)="saveTask()"></i>
+    <i class="fa fa-trash-o" title="Delete" (click)="deleteTask()"></i>
+  </div>
+  <form [formGroup]="profileForm">
+    <label>
+      <mat-checkbox class="circular-checkbox" formControlName="isComplete" title="Is Complete"></mat-checkbox>
+      <input type="text" formControlName="title" class="title-text" placeholder="Enter title">
+    </label>
+    <label>
+      <i class="fa fa-commenting-o"></i>
+      <input type="text" formControlName="notes" placeholder="Add notes">
+    </label>
+    <label>
+      <i class="fa fa-calendar-check-o"></i>
+        <input type="text" formControlName="date" matInput [matDatepicker]="picker" placeholder="Choose a date" (focus)="picker.open()" (click)="picker.open()">
+        <mat-datepicker #picker></mat-datepicker>
+    </label>
+    <label>
+      <i class="fa fa-list"></i>
+      <div class="sub-task-container">
+        <div formArrayName="subTasks">
+          <div *ngFor="let subTask of subTasks.controls; let i=index">
+            <div formGroupName="{{i}}">
+              <label>
+                <input type="text" formControlName="title" class="sub-task-title" placeholder="Enter title">
+
+                <i class="fa fa-remove" title="Back" (click)="removeSubTask(i)"></i>
+              </label>
+            </div>
+          </div>
+        </div>
+        <input type="text" readonly="readonly" value="Add subtasks" (click)=addSubtask() class="sub-task-title add-subtask-button">
+      </div>
+    </label>
+  </form>
+</div>
