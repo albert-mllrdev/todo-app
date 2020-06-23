@@ -1,17 +1,13 @@
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
-<<<<<<< HEAD
-@NgModule({
-    imports: [ HttpClientModule ],
-    providers: [ ]
-=======
-import { DataService } from './data.service';
 import { SorterService } from './sorter.service';
+import { StudentDataService } from './data/students.services';
+import { CoursesDataService } from './data/courses.services';
+import { DataService } from './data.service';
 
 @NgModule({
     imports: [ HttpClientModule ],
-    providers: [ DataService, SorterService ]
->>>>>>> parent of c862891... updated data.service so the functions are moved into their respective places
+    providers: [ SorterService, DataService, StudentDataService, CoursesDataService ]
 })
 export class CoreModule { }

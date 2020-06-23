@@ -1,0 +1,83 @@
+table {
+  text-align: left;
+  width:100%;
+  table-layout:fixed;
+}
+
+table, th, td {
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #efefef;
+}
+
+th, td{
+  padding:10px;
+  width:33%;
+}
+
+th{
+  cursor:pointer;
+}
+
+td{
+  border-bottom:black 1px solid;
+}
+
+td a {
+  display: block;
+  color: blue;
+  text-decoration: none;
+}
+
+td a:hover{
+  font-weight:bold;
+}
+
+td button{
+  width:50px;
+}
+
+tr td:last-child{
+  text-align:right;
+}
+tr:last-child td {
+  border-bottom: none;
+}
+
+.link-container{
+
+}
+
+tr td.no-records {
+  color: red;
+  text-align:left;
+}
+
+.record-summary{
+  margin-left:10px;
+  margin-top:20px;
+}
+
+.top-container{
+  height:90px;
+}
+
+.filter-container {
+  float: left;
+  font-size: 18px;
+}
+
+.filter-container input{
+  border: none;
+  border-bottom: solid black 1px;
+  outline: none;
+  margin-top:20px;
+  font-size:18px;
+}
+
+.add-button{
+  float:right;
+  margin-right:10px;
+}

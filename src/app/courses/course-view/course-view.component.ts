@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { ICourse } from 'src/app/shared/interfaces';
-import { DataService } from '../../core/data.service';
+import { CoursesDataService } from 'src/app/core/data/courses.services';
 
 @Component({
   selector: 'app-course-view',
@@ -14,7 +14,7 @@ export class CourseViewComponent implements OnInit {
   course: ICourse;
   valid = true;
 
-  constructor(private dataService: DataService, private route: ActivatedRoute, public router: Router) { }
+  constructor(private dataService: CoursesDataService, private route: ActivatedRoute, public router: Router) { }
 
   save() {
     this.dataService.saveCourse(this.course);
