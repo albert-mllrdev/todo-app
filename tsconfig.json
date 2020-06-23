@@ -16,7 +16,8 @@
       "dom"
     ],
     "paths": {
-      "@interfaces/*": ["src/app/shared/interfaces/*"]
+      "@interfaces/*": ["src/app/shared/interfaces/*"],
+      "@data/*": ["src/app/core/data/*"]
     }
   },
   "angularCompilerOptions": {

@@ -1,0 +1,40 @@
+div.task-list-row-container {
+  cursor: pointer;
+  border: solid 1px gainsboro;
+  border-radius: 10px;
+  width: 300px;
+  padding:10px;
+  margin-bottom: 20px;
+  line-height: 24px;
+
+  div.complete-marker{
+    width: 20px;
+    height: 20px;
+    padding:0px;
+    margin-right: 10px;
+    float: left;
+    border: solid 1px gainsboro;
+    border-radius: 20px;
+  }
+}
+
+div.task-list-row-container:hover{
+  border: solid 1px darkgrey;
+}
+
+div.task-complete{
+  div.complete-marker{
+    background-color: gainsboro;
+
+    &:before{
+      content:'\2713';
+      display:inline-block;
+      color:white;
+      padding-left: 4px;
+    }
+  }
+
+  span.task-title{
+    text-decoration: line-through;
+  }
+}
