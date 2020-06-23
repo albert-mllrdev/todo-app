@@ -20,19 +20,18 @@ body{
     min-width: 90px;
     border-radius: 10px;
     outline: none;
-  }
 
-  button:hover{
-    font-weight:bold;
-  }
+    &:hover{
+      font-weight:bold;
+    }
 
-  button[disabled] {
-    color: lightgrey;
-    cursor: default;
-  }
+    &[disabled]{
+      color: lightgrey;
+      cursor: default;
 
-  button[disabled]:hover {
-    font-weight: normal;
+      &:hover{
+        font-weight: normal;
+      }
+    }
   }
-
 }

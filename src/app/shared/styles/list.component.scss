@@ -14,10 +14,6 @@ table {
     border-collapse: collapse;
   }
 
-  th:nth-child(1), th:nth-child(2){
-    cursor: pointer;
-  }
-
   tr {
     td {
       padding:10px;
@@ -29,29 +25,29 @@ table {
         display: block;
         color: blue;
         text-decoration: none;
-      }
 
-      a:hover{
-        font-weight:bold;
-      }
+        &:hover{
+          font-weight:bold;
+        }
+      }    
 
       button{
         width:50px;
       }
+
+      &:last-child{
+        text-align:right;
+      }
+
+      &.no-records{
+        color: red;
+        text-align:left;
+      }
     }
 
-    td:last-child{
-      text-align:right;
+    &:last-child td {
+      border-bottom: none;
     }
-
-    td.no-records {
-      color: red;
-      text-align:left;
-    }
-  }
-
-  tr:last-child td {
-    border-bottom: none;
   }
 }
 
