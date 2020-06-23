@@ -2,7 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { StudentDataService } from 'src/app/core/data/data.student.service';
-import { IStudent } from 'src/app/shared/interfaces/student';
+import { IStudent } from '@interfaces/student';
+
 
 @Component({
   selector: 'app-students-list',

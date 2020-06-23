@@ -1,8 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { CourseDataService } from 'src/app/core/data/data.course.service';
-import { IStudent } from 'src/app/shared/interfaces/student';
-import { ICourse } from 'src/app/shared/interfaces/course';
+import { IStudent } from '@interfaces/student';
+import { ICourse } from '@interfaces/course';
+
 
 @Component({
   selector: 'app-students-list-row',

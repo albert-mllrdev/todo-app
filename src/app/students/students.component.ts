@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { StudentDataService } from '../core/data/data.student.service';
-import { IStudent } from '../shared/interfaces/student';
+import { IStudent } from '@interfaces/student';
+
 
 @Component({
   selector: 'app-students',

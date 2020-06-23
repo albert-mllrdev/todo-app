@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 
 import { StudentDataService } from 'src/app/core/data/data.student.service';
 import { CourseDataService } from 'src/app/core/data/data.course.service';
-import { IStudent } from 'src/app/shared/interfaces/student';
-import { ICourse } from 'src/app/shared/interfaces/course';
+import { ICourse } from '@interfaces/course';
+import { IStudent } from '@interfaces/student';
 
 @Component({
   selector: 'app-student-form',
