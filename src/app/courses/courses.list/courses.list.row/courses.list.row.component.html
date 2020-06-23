@@ -1,0 +1,10 @@
+<div class="row-container">
+  <div>
+    <a [routerLink]="['/courses/view', course.id]">
+      {{ course.name | titlecase }}
+    </a>
+  </div>
+  <div>
+    <button [disabled]="!hasStudents" (click)="deleteCourse(course.id)">Delete</button>
+  </div>
+</div>

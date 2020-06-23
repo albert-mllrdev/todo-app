@@ -1,0 +1,46 @@
+<div style="width: 900px;">
+  <div class="top-container">
+    <div class="filter-container">
+      <span>Filter</span>
+      <select [(ngModel)]="filterType" (change)="clearFilters()">
+          <option value="1">by First Name</option>
+          <option value="2">by Last Name</option>
+          <option value="3">by City</option>
+      </select>
+      <input *ngIf="filterType == 1" type="text" [(ngModel)]="studentFilter.firstName"/>
+      <input *ngIf="filterType == 2" type="text" [(ngModel)]="studentFilter.lastName"/>
+      <input *ngIf="filterType == 3" type="text" [(ngModel)]="studentFilter.city"/>
+    </div>
+    <div class="sort-container">
+      <span>Sort</span>
+      <select [(ngModel)]="sortField">
+          <option value="firstName">by First Name</option>
+          <option value="lastName">by Last Name</option>
+          <option value="city">by City</option>
+      </select>
+    </div>
+
+    <button class="add-button" (click)="router.navigate(['/students/new'])">Add New</button>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>City</th>
+        <th>Course</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tr *ngFor="let student of students | orderBy: sortField : false : true | filterBy: studentFilter">
+      <td colspan="4">
+        <app-students-list-row [student]="student" (deleteStudentEvent)='deleteStudent($event)'></app-students-list-row>
+      </td>
+    </tr>
+    <tr *ngIf="!(students | filterBy: studentFilter).length">
+      <td colspan="4" class="no-records">No students found...</td>
+    </tr>
+  </table>
+  <div class="record-summary" *ngIf="(students | filterBy: studentFilter).length">
+    Total students: <b>{{(students | filterBy: studentFilter).length}}</b>
+  </div>
+</div>

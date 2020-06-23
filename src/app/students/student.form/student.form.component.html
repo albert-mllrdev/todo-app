@@ -1,0 +1,29 @@
+<form [formGroup]="profileForm" (ngSubmit)="saveStudent()">
+    <label>
+      First Name:
+      <input type="text" formControlName="firstName">
+    </label>
+
+    <label>
+      Last Name:
+      <input type="text" formControlName="lastName">
+    </label>
+
+    <label>
+      City:
+      <input type="text" formControlName="city">
+    </label>
+
+    <label>
+      Course:
+      <select formControlName="courseId">
+        <option value="null" disabled>Select Course</option>
+        <option *ngFor="let course of courses | orderBy: 'name' : false : true" value="{{ course.id  }}">{{ course.name | titlecase }}</option>
+      </select>
+    </label>
+
+    <label>
+      <button type="submit" [disabled]="!profileForm.valid">Save</button>
+      <button *ngIf="goBackToStudents" (click)="router.navigate(['/students'])">Back</button>
+    </label>
+  </form>

@@ -1,0 +1,91 @@
+table {
+  text-align: left;
+  width:100%;
+  table-layout:fixed;
+  border-collapse: collapse;
+
+  thead {
+    background-color: #efefef;
+  }
+
+  th{
+    padding:10px;
+    width:33%;
+    border-collapse: collapse;
+  }
+
+  tr {
+    td {
+      padding:10px;
+      width:33%;
+      border-bottom:black 1px solid;
+      border-collapse: collapse;
+
+      a {
+        display: block;
+        color: blue;
+        text-decoration: none;
+
+        &:hover{
+          font-weight:bold;
+        }
+      }    
+
+      button{
+        width:50px;
+      }
+
+      &:last-child{
+        text-align:right;
+      }
+
+      &.no-records{
+        color: red;
+        text-align:left;
+      }
+    }
+
+    &:last-child td {
+      border-bottom: none;
+    }
+  }
+}
+
+.filter-container {
+  float: left;
+  font-size: 18px;
+
+  input{
+    border: none;
+    border-bottom: solid black 1px;
+    outline: none;
+    margin-top: 20px;
+    font-size: 18px;
+    margin-left: 10px;;
+  }
+}
+
+.sort-container, .filter-container  {
+  font-size: 18px;
+  width: 600px;
+
+  span {
+    display: inline-block;
+    width: 80px;
+  }
+
+  input, select {
+    border: none;
+    border-bottom: solid black 1px;
+    outline: none;
+    margin-top: 20px;
+    font-size: 18px;
+    margin-left: 10px;;
+  }
+}
+
+.add-button{
+  float:right;
+  margin-right:10px;
+  margin-bottom: 10px;
+}
