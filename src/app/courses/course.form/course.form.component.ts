@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup,  FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { CourseDataService } from 'src/app/core/data/data.course.service';
-import { ICourse } from 'src/app/shared/interfaces/course';
-import { Router } from '@angular/router';
+import { ICourse } from '@interfaces/course';
 
 @Component({
   selector: 'app-course-form',
